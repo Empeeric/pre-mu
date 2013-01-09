@@ -14,6 +14,4 @@ results
 node_modules
 npm-debug.log
 .idea
-/public/cdn/*.jpg
-/tools/db-production-dump.bat
-/tools/db-restore-local-to-production.bat
+public/cdn/*
