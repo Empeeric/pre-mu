@@ -4,39 +4,42 @@
 //        ResizeDivs();
 //    });
 
-    $(".page-content").each(function () {
-        var $this = $(this);
-        var target = $this.attr("data-href") + " > *";
-        //$this.load(target);
-        $.ajax({
-            url: target,
-            dataType: 'html',
-            success: function (data) {
-                var content = $("#main", $(data)).html();
-                $this.html(content);
-                ResizeDivs();
-            }
-        });
-    });
-
-    PagesLoadComplete();
-
+    /*
+        left menu
+     */
     $("#header a, a.scrollLink").click(function () {
         $('.active').removeClass('active');
         $(this).addClass('active');
 
-        var target = $($(this).attr('href')).addClass('active'),
+        var hash = $(this).attr('href'),
+            target = $(hash).addClass('active'),
             top = target.position().top;
 
-        console.log(top);
         $('#main').css({ top: -top });
 
         //        history.pushState({page: 1}, "Mouse - " +title, "/mouse/" + title);
         return false;
     });
 
-    var $header = $("#header");
-    //    $header.hover(MouseOver, MouseOut);
+
+    /*
+        load inner pages
+     */
+    $('.page-content[data-href]').each(function () {
+        var $this = $(this);
+
+        $.ajax({
+            url: $(this).data('href'),
+            dataType: 'html',
+            success: function (data) {
+                $this.html(data);
+//                ResizeDivs();
+            }
+        });
+    });
+
+    PagesLoadComplete();
+
     $(".hasSubmenu").each(function () {
         $(this).find(".dropdown").width($(this).width());
     });

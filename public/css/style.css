@@ -4,14 +4,14 @@ body { overflow: auto; height: 100%;
     padding: 0;
     font-family: Verdana, sans-serif;
     background: -webkit-linear-gradient(left, rgba(236,236,236,1) 7%,rgba(255,255,255,1) 48%); /* Chrome10+,Safari5.1+ */
-
 }
+
+.hide { display: none; }
 
 a { margin: 0; padding: 0; text-decoration: none; }
 li { margin: 0; padding: 0; list-style: none; }
 ul { margin: 0; padding: 0; }
 h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; font-weight: normal; }
-
 h1 {
     color: #c10f00;
     font-size: 40px;
@@ -21,7 +21,6 @@ h1 {
     padding-top: 70px;
     font-weight: 100;
 }
-
 h2 {
     font-size: 36px;
     color: #c10f00;
@@ -37,6 +36,9 @@ h2 {
     height: 100%;
 }
 
+/*
+    header
+*/
 #header {
     width: 100px;
     background: rgba(255, 255, 2550, 0.6);
@@ -47,22 +49,17 @@ h2 {
     overflow: hidden;
     -webkit-transition: width 0.5s;
 }
-#header:hover {
-    width: 200px;
-}
-
+#header:hover { width: 200px; }
 #logo {
     padding: 45px 0 0 25px;
     display: block;
     background: none !important;
     box-shadow: none !important;
 }
-
 #header a.work { background-image: url(../img/menuWork.png); }
 #header a.about { background-image: url(../img/menuAboutUs.png); }
 #header a.services { background-image: url(../img/menuServices.png); }
 #header a.contact { background-image: url(../img/menuContact.png); }
-
 #header a {
     display: block;
     width: 100%;
@@ -71,7 +68,6 @@ h2 {
     background-repeat: no-repeat;
     white-space: nowrap;
 }
-
 #header span {
     line-height: 70px;
     text-align: center;
@@ -86,39 +82,35 @@ h2 {
 #header:hover span {
     opacity: 1;
 }
-
 #header:hover a { background-position: 0 -70px; }
 #header a:hover { background-position: 0 -210px; }
 #header a.active {
     background-color: #BE3B33;
     box-shadow: black 0 0 13px 0 inset;
-    /*background-image:url(../img/HoverLinkBg.png);*/
 }
 #header .active span {
     color: white;
 }
-
 #header a.active {
     background-position: 0 -140px;
 }
 
-/* Content */
+
+/*
+    content
+*/
 #content {
-    position: relative;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
+    position: relative; left: 0; top: 0;
+    height: 100%; width: 100%;
     z-index: 1;
     overflow: hidden;
 }
-
 .desc {
     font-size: 14px;
     line-height: 22px;
     color: #2f383e;
     margin: 25px 0 0 0;
-    width: 600px;
+    max-width: 600px;
 }
 #main {
     position: relative;
@@ -128,11 +120,10 @@ h2 {
 
 .page-content {
     /*background:url(../img/BodyBg.png) repeat-y;*/
-    margin: 0 0 0 100px;
-    padding: 0 0 0 130px;
+    margin: 0; padding: 0 30px 0 230px; box-sizing: border-box;
     height: 100%;
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .mouse {
@@ -149,9 +140,7 @@ h2 {
 }
 
 .works {
-    position: absolute;
-    left: 70px;
-    bottom: 0px;
+    position: absolute; left: 70px; bottom: 0;
     height: 400px;
 }
 
