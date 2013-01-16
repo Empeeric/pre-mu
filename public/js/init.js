@@ -25,17 +25,10 @@
         $main.css({ top: -top });
     };
     $(window)
-        .on('hashchange', function() {
+        .on('hashchange resize', function() {
             page(location.hash);
         })
-        .on('resize', function() {
-            $main.addClass('no-transition');
-            page(location.hash);
-            setTimeout(function() {
-                $main.removeClass('no-transition');
-            }, 0);
-        })
-        .trigger('resize');
+        .trigger('hashchange');
 })();
 
 
