@@ -29,6 +29,9 @@
             page(location.hash);
         })
         .trigger('hashchange');
+    setTimeout(function() {
+        $main.removeClass('no-transition');
+    }, 0);
 })();
 
 
