@@ -45,7 +45,7 @@ h2 {
 #header {
     width: 100px;
     background: rgba(255, 255, 2550, 0.6);
-    border-right: 1px solid #c10f00;
+    border: 1px solid #c10f00; border-width: 0 1px 0 0;
     height: 100%;
     position: fixed;
     z-index: 2;
@@ -60,6 +60,13 @@ h2 {
     background-position: 0 0;
     background-repeat: no-repeat;
     white-space: nowrap;
+}
+#header:hover a { background-position: 0 -70px; }
+#header a:hover { background-position: 0 -210px; }
+#header a.active {
+    background-position: 0 -140px;
+    background-color: #be3b33;
+    box-shadow: black 0 0 13px 0 inset;
 }
 #header a#logo {
     height: 68px;
@@ -95,17 +102,6 @@ h2 {
 #header:hover span { opacity: 1; }
 #header a:hover span { color: #A50A00; }
 #header .active span { color: white !important; }
-
-#header:hover a { background-position: 0 -70px; }
-#header a:hover { background-position: 0 -210px; }
-#header a.active {
-    background-color: #be3b33;
-    box-shadow: black 0 0 13px 0 inset;
-}
-#header a.active {
-    background-position: 0 -140px;
-}
-
 
 /*
     content
@@ -392,7 +388,7 @@ h2 {
 
 #contact aside {
     float: left;
-    width: 20%; min-width: 200px;
+    width: 20%; min-width: 160px;
     padding: 10px 20px;
     background: #f9f9f9;
     color: #c10f00;

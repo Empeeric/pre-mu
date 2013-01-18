@@ -32,8 +32,6 @@ $.fn.animateClass = function(cls, cb) {
         if (!target.length)
             return;
 
-        $('#logo').animateClass('animate');
-
         var top = target.position().top;
         $main.css({ top: -top });
     };
@@ -50,6 +48,11 @@ $.fn.animateClass = function(cls, cb) {
 
 $(function() {
     ux();
+
+    var $logo = $('#logo');
+    $('#header a').click(function() {
+        $logo.animateClass('animate');
+    });
 
     $('#work').click(function() {
         location.hash = '#/work';
