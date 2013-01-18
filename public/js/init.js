@@ -1,4 +1,17 @@
-﻿(function() {
+﻿// add class, remove it at animation end. also callback
+$.fn.animateClass = function(cls, cb) {
+    if (typeof cb === 'string') {
+        var endClass = cb;
+        cb = function() { $(this).addClass(endClass); };
+    }
+
+    return $(this).one('webkitAnimationEnd', function() {
+        $(this).removeClass(cls);
+        if (cb) cb.call(this);
+    }).addClass(cls);
+};
+
+(function() {
     /*
         site navigation
      */
@@ -10,18 +23,16 @@
         var link = $header.find('a[href="'+ hash +'"]');
         hash = '#' + hash.substr(2);
 
-        console.log('page', hash);
-
         $header.find('.active').removeClass('active');
         link.addClass('active');
 
         var target = pages.removeClass('active')
             .filter(hash).addClass('active');
 
-        console.log('page', target);
-
         if (!target.length)
             return;
+
+        $('#logo').animateClass('animate');
 
         var top = target.position().top;
         $main.css({ top: -top });
