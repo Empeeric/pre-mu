@@ -10,6 +10,8 @@
         var link = $header.find('a[href="'+ hash +'"]');
         hash = '#' + hash.substr(2);
 
+        console.log('page', hash);
+
         $header.find('.active').removeClass('active');
         link.addClass('active');
 
