@@ -81,7 +81,7 @@ var ux = function(context) {
     /*
         gallery
      */
-    $('.gallery li', context).click(function() {
+    $('.gallery img', context).click(function() {
         var $this = $(this).attr('class', '');
 
         $.each(['nextAll', 'prevAll'], function(i, which) {
