@@ -118,7 +118,7 @@ var ux = function(context) {
                 tab = tabs.filter(selector);
 
             if (!tab.length || !tab.is('.tab'))
-                return;
+                return false;
 
             menu.removeClass('active');
             $(this).addClass('active');
@@ -129,5 +129,12 @@ var ux = function(context) {
 
             return false;
         });
+    });
+};
+
+
+var menuer = function() {
+    $('.top-menu').each(function() {
+
     });
 };

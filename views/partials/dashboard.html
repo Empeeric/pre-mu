@@ -1,0 +1,17 @@
+<div id="dashboard">
+    <div class="wrapper clearfix">
+        {@footer}
+        <section class="section usefull-stuff">
+            <h6>{header}</h6>
+            <ul class="clearfix">
+                {#links}
+                <li><a href="{url}">{title}</a></li>
+                {/links}
+            </ul>
+        </section>
+        {/footer}
+
+        {>"views/partials/contact.html"/}
+
+        <span class="arrow2">&nbsp;</span> </div>
+</div>
