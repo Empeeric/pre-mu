@@ -11,6 +11,7 @@ $.fn.animateClass = function(cls, cb) {
     }).addClass(cls);
 };
 
+
 (function() {
     /*
         site navigation
@@ -21,7 +22,7 @@ $.fn.animateClass = function(cls, cb) {
 
     window.page = function(hash) {
         var link = $header.find('a[href="'+ hash +'"]');
-        hash = '#' + hash.substr(2);
+        hash = hash ? '#' + hash.substr(2) : '#home';
 
         $header.find('.active').removeClass('active');
         link.addClass('active');
