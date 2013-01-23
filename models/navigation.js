@@ -12,7 +12,7 @@ var navigationSchema = new Schema({
     title: { type: String, required: true },
     meta: [metaSchema],
     url: { type: String, trim: true, lowercase: true},
-    template: { type: ObjectId, ref: 'template'},
+    template: { type: String, enum: require('../views') },
     order: { type: Number, editable: false },
     menu: { type: Boolean, 'default': true },
     show: { type: Boolean, 'default': true }
