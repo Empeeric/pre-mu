@@ -2,31 +2,20 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.Types.ObjectId;
 
-var metaSchema = new Schema({
-    name: String,
-    content: {type: Schema.Types.Text}
-});
+var n = new Schema({
+    parent: { type: ObjectId, ref: 'navigation' },
+    name: { type: String, require: true },
+    page: { type: ObjectId, ref: 'page' },
 
-var navigationSchema = new Schema({
-    parent: { type: ObjectId, ref: 'navigation'},
-    title: { type: String, required: true },
-    meta: [metaSchema],
-    url: { type: String, trim: true, lowercase: true},
-    template: { type: String, enum: require('../views') },
     order: { type: Number, editable: false },
-    menu: { type: Boolean, 'default': true },
     show: { type: Boolean, 'default': true }
 });
 
-navigationSchema.methods.toString = function(){
-    return this.title;
+n.methods.toString = function(){
+    return this.name;
 };
 
-navigationSchema.path('url').validate(function(v, callback){
-    this.db.model('navigation').findOne().where('url', this.url).ne('_id', this._id).exec(function(err, url){
-        callback(url ? false: true);
-    });
-}, 'url already exists');
+module.exports = mongoose.model('navigation', n);
+//exports.single = true;
 
-var navigation = module.exports = mongoose.model('navigation', navigationSchema);
 

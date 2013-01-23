@@ -1,6 +1,13 @@
 var dust = require('dustjs-helpers'),
     models = require('../models');
 
+dust.helpers['first'] = function(chunk, context, bodies) {
+    var body = bodies.block;
+    if (context.stack.index == 0) {
+        return chunk;
+    }
+};
+
 dust.helpers['cloudinary'] = function (chunk, context, bodies, params) {
     context = params && params.path ? context.get(params.path) : context.current();
 
@@ -168,10 +175,11 @@ dust.helpers['menu'] = function(chunk, context, bodies) {
             .where('menu', true)
             .sort({order: 1})
             .exec(function(err, menu){
-                menu.forEach(function(item){
-                    item = item.toObject();
-                    item.dock = (crumbs[0]._id.toString() === item._id.toString());
-                    context = context.push(item);
+                menu.forEach(function(item, i){
+                    o = item.toObject();
+                    o.first = i == 0;
+                    o.dock = (crumbs[0]._id.toString() === o._id.toString());
+                    context = context.push(o);
                     chunk.render(bodies.block, context)
                 });
 

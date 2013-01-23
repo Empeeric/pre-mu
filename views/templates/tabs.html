@@ -1,0 +1,24 @@
+<div class="tabs with-menu">
+    <h2>{page.title}</h2>
+
+    <ul class="top-menu">
+        {#children}
+        <li>
+            <a href="#" rel="{name}">{page.title}</a>
+            {?children}
+            <ul class="dropdown">{?children} class="with-menu"{/children}
+                {#children}
+                <li><a href="#" rel="{name}">{page.title}</a></li>
+                {/children}
+            </ul>
+            {/children}
+        </li>
+        {/children}
+    </ul>
+
+    {#children}
+    <section class="tab{?first} active{/first}" id="tab-{name}">
+        {>"views/templates/{page.template}"/}
+    </section>
+    {/children}
+</div>

@@ -78,7 +78,6 @@ $(function() {
 
 
 var ux = function(context) {
-    context = context || window;
     /*
         gallery
      */
@@ -97,6 +96,7 @@ var ux = function(context) {
     /*
         tabs
      */
+
     $('.tabs', context).each(function() {
         var $this = $(this),
             tabs = $this.find('> .tab');
@@ -113,12 +113,12 @@ var ux = function(context) {
             active.removeClass('prev next active').addClass(dir);
         });
 
-        var menu = $this.find('> .top-menu a');
+        var menu = $this.find('.top-menu a');
         menu.click(function() {
-            var selector = $(this).attr('href'),
-                tab = tabs.filter(selector);
+            var name = $(this).attr('rel'),
+                tab = tabs.filter('#tab-'+ name);
 
-            if (!tab.length || !tab.is('.tab'))
+            if (!tab.length)
                 return false;
 
             menu.removeClass('active');
