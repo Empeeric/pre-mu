@@ -44,7 +44,8 @@ var nav = function(req, res, next) {
             for (var i in o) {
                 arr.push(o[i]);
             }
-            arr[0].first = true;
+            if (arr.length)
+                arr[0].first = true;
 
             req.nav = arr;
             next(err);
@@ -52,7 +53,7 @@ var nav = function(req, res, next) {
 };
 
 module.exports = function(app){
-    app.get('/', [config, nav], function(req, res) {
+    app.get('/server', [config, nav], function(req, res) {
         res.render('index.html', {
             config: req.config,
             nav: req.nav
