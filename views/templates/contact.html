@@ -1,0 +1,25 @@
+<h2>{title}</h2>
+<div>{text|s}</div>
+
+<form action="">
+    <label>
+        Name
+        <input type="text" name="name"/>
+    </label>
+    <label>
+        Email
+        <input type="text" name="email"/>
+    </label>
+    <label>
+        Message
+        <textarea name="message"></textarea>
+    </label>
+
+    <label class="submit">
+        <button type="submit" class="send">Send Message</button>
+    </label>
+</form>
+
+<aside>
+    {#config}{contact_details|s}{/config}
+</aside>

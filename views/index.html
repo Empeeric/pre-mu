@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>{config.title}</title>
     <link href="css/normalize.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     <!--<link href="fonts/fonts.css" rel="stylesheet" type="text/css" />-->
@@ -13,32 +13,36 @@
 
 <div id="wrap">
     <header id="header">
-        {#nav}
-        <a href="#{name}" class="{name}">
-            {?first}
-            <img src="img/mouse.png" alt="" />
+        {#pages}
+        <a href="#/{name}" class="{name}">
+            {@first}
+                <img src="img/mouse.png" alt="" />
             {:else}
-            <span>{page.title}</span>
+                <span>{title}</span>
             {/first}
         </a>
-        {/nav}
+        {/pages}
     </header>
 
     <div id="content">
         <section id="main" class="no-transition">
-            {#nav}
+            {#pages}
             <div id="{name}" class="page">
-                {>"views/templates/{page.template}"/}
+                {?template}
+                    {>"views/templates/{template}"/}
+                {:else}
+                    {>"views/templates/page.html"/}
+                {/template}
             </div>
-            {/nav}
+            {/pages}
         </section>
     </div>
 </div>
 
-<!-- SCRIPTS -->
+<!-- scripts -->
 <!--<script src="http://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>-->
 <!--<script type="text/javascript">      window.jQuery || document.write('<script src="/js/jquery-1.8.3.min.js"><\/script>')</script>-->
-<script src="/js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
 <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
 <script src="js/init.js" type="text/javascript"></script>
 

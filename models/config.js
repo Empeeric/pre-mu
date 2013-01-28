@@ -1,10 +1,10 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.Types.ObjectId;
+    Types = mongoose.Schema.Types;
 
-var configSchema = new Schema({
-    key: { type: String, required: true },
-    value: { type: Schema.Types.Text }
+var schema = new mongoose.Schema({
+    title: { type: String, required: true },
+    contact_details: { type: Types.Html }
 });
 
-var config = module.exports = mongoose.model('config', configSchema);
+var config = module.exports = mongoose.model('config', schema);
+config.single = true;

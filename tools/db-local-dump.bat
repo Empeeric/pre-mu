@@ -1,2 +1,2 @@
 cd ..
-mongodump -d roninil -o dump
+mongodump -d mouse -o dump

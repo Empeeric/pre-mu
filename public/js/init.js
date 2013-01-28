@@ -30,6 +30,8 @@ $.fn.animateClass = function(cls, cb) {
         var target = pages.removeClass('active')
             .filter(hash).addClass('active');
 
+        console.log(hash);
+
         if (!target.length)
             return;
 
@@ -55,8 +57,8 @@ $(function() {
         $logo.animateClass('animate');
     });
 
-    $('#work').click(function() {
-        location.hash = '#/work';
+    $('#works').click(function() {
+        location.hash = '#/works';
     });
 
     /*
@@ -101,7 +103,9 @@ var ux = function(context) {
         var $this = $(this),
             tabs = $this.find('> .tab');
 
-        $this.find('> .nav.next, > .nav.prev').click(function() {
+        $this.find('> .nav.next, > .nav.prev').click(function(e) {
+            e.preventDefault();
+
             var dir = $(this).is('.next') ? 'next' : 'prev',
                 active = tabs.filter('.active'),
                 tab = active[dir]();
@@ -114,7 +118,9 @@ var ux = function(context) {
         });
 
         var menu = $this.find('.top-menu a');
-        menu.click(function() {
+        menu.click(function(e) {
+            e.preventDefault();
+
             var name = $(this).attr('rel'),
                 tab = tabs.filter('#tab-'+ name);
 
@@ -130,12 +136,5 @@ var ux = function(context) {
 
             return false;
         });
-    });
-};
-
-
-var menuer = function() {
-    $('.top-menu').each(function() {
-
     });
 };

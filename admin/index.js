@@ -45,9 +45,8 @@ module.exports = function (app) {
             options.sortable = 'order';
         }
 
-
         if (model.single)
-            admin.registerSingleRowModel(name, model, null, options);
+            admin.registerSingleRowModel(model, name, options);
         else
             admin.registerMongooseModel(name, model, null, options);
     }

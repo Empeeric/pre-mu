@@ -1,3 +1,3 @@
 cd ..
-mongorestore -d roninil --drop dump/roninil
+mongorestore -d mouse --drop dump/mouse
 pause
