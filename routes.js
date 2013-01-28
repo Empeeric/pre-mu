@@ -1,4 +1,5 @@
-var models = require('./models');
+var models = require('./models'),
+    mail = require('./mail');
 
 /*
  middle-wares
@@ -68,5 +69,24 @@ module.exports = function(app){
 
     app.get('/json', [ config ], function(req, res) {
         res.json(req.config);
-    })
+    });
+
+    mail.init(app.get('sendgrid'));
+    app.post('/mail', [ config ], function(req, res) {
+        var message = {
+            to: req.config.email,
+            from: req.body.email,
+            subject: 'MOUSE mail, from ' + req.body.name,
+            text: req.body.message
+        };
+
+        console.log('Sending mail', message);
+
+        mail.send(message, function(success, message) {
+            if (!success)
+                console.error('Error: Could not send mail.', message);
+
+            res.redirect('/#/contact');
+        });
+    });
 };
