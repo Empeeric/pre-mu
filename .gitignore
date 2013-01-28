@@ -18,3 +18,4 @@ npm-debug.log
 public/cdn/*
 .idea
 node_modules
+/tools/db-restore-local-to-production.bat.bat
