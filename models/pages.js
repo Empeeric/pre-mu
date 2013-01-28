@@ -9,6 +9,7 @@ var schema = new mongoose.Schema({
 
     text: { type: Types.Html },
     background: { type: Types.Picture },
+    background_class: { type: String, enum: [ '-', 'big' ] },
 
     order: { type: Number, editable: false },
     show: { type: Boolean, 'default': true }

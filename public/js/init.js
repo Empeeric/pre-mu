@@ -20,28 +20,21 @@ $.fn.bg = function(url) {
      background image
      */
     var $wrap = $('#wrap'),
-        back = [ $('#back1'), $('#back2') ],
+        backs = [ $('#back li:first'), $('#back li:last') ],
         num = 1,
         img = $('<img />');
 
-    back[num].hide();
-    var background = function(url) {
-        console.log(0);
-        img.off('load')
-            .one('load', function() {
-                console.log(1);
-                back[num ? 0 : 1]
-                    .bg(url)
-                    .fadeIn()
-                    .queue(function(next) {
-                        console.log(2);
-                        back[num].bg(url);
-                        back[num ? 0 : 1].hide();
-                        num = num ? 0 : 1;
-                        next();
-                    });
-            })
-            .attr('src', url);
+    var background = function(target) {
+        var url = target.data('background'),
+            clss = target.data('background-class');
+
+//        img.off('load')
+//            .one('load', function() {
+        backs[num].bg(url).attr('class', 'show ' + clss);
+        backs[num ? 0 : 1].removeClass('show');
+        num = num ? 0 : 1;
+//            })
+//            .attr('src', url);
     };
 
 
@@ -65,7 +58,7 @@ $.fn.bg = function(url) {
         if (!target.length)
             return;
 
-        background(target.data('background'));
+        background(target);
 
         var top = target.position().top;
         $main.css({ top: -top });
@@ -95,7 +88,7 @@ $(function() {
 
     /*
         load inner pages
-     */
+     * /
     $('.page[data-href]').each(function () {
         var $this = $(this);
 
@@ -108,6 +101,7 @@ $(function() {
             }
         });
     });
+    */
 });
 
 

@@ -48,8 +48,6 @@ app.configure('development', function(){
 });
 
 require('./dust/helpers');
-//require('./dust/filters');
-//require('./mongoose/helpers');
 require('mongoose').connect(app.get('mongo'));
 require('./routes')(app);
 
