@@ -10,11 +10,43 @@ $.fn.animateClass = function(cls, cb) {
         if (cb) cb.call(this);
     }).addClass(cls);
 };
+$.fn.bg = function(url) {
+    return $(this).css('background-image', 'url('+url+')');
+};
 
 
 (function() {
     /*
-        site navigation
+     background image
+     */
+    var $wrap = $('#wrap'),
+        back = [ $('#back1'), $('#back2') ],
+        num = 1,
+        img = $('<img />');
+
+    back[num].hide();
+    var background = function(url) {
+        console.log(0);
+        img.off('load')
+            .one('load', function() {
+                console.log(1);
+                back[num ? 0 : 1]
+                    .bg(url)
+                    .fadeIn()
+                    .queue(function(next) {
+                        console.log(2);
+                        back[num].bg(url);
+                        back[num ? 0 : 1].hide();
+                        num = num ? 0 : 1;
+                        next();
+                    });
+            })
+            .attr('src', url);
+    };
+
+
+    /*
+     site navigation
      */
     var $main = $('#main'),
         $header = $('#header'),
@@ -30,10 +62,10 @@ $.fn.animateClass = function(cls, cb) {
         var target = pages.removeClass('active')
             .filter(hash).addClass('active');
 
-        console.log(hash);
-
         if (!target.length)
             return;
+
+        background(target.data('background'));
 
         var top = target.position().top;
         $main.css({ top: -top });

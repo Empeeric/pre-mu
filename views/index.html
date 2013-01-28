@@ -12,6 +12,9 @@
 <body>
 
 <div id="wrap">
+    <div id="back1" style="background-image: url({pages[0].background.url})"></div>
+    <div id="back2"></div>
+
     <header id="header">
         {#pages}
         <a href="#/{name}" class="{name}">
@@ -27,7 +30,7 @@
     <div id="content">
         <section id="main" class="no-transition">
             {#pages}
-            <div id="{name}" class="page">
+            <div id="{name}" class="page" data-background="{background.url}">
                 {?template}
                     {>"views/templates/{template}"/}
                 {:else}

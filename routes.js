@@ -43,23 +43,26 @@ var pages = function(req, res, next) {
         });
 };
 
-var works = function(req, res, next) {
-    models.works
-        .find()
-        .where('show', true)
-//        .sort({ order: 1 })
-        .exec(function(err, works){
-            req.works = works;
-            next(err);
-        });
+var docs = function(model) {
+    return function(req, res, next) {
+        models[model]
+            .find()
+            .where('show', true)
+            .sort({ order: 1 })
+            .exec(function(err, docs){
+                req[model] = docs;
+                next(err);
+            });
+    }
 };
 
 module.exports = function(app){
-    app.get('/', [ config, pages, works ], function(req, res) {
+    app.get('/', [ config, pages, docs('works'), docs('clients') ], function(req, res) {
         res.render('index.html', {
             config: req.config,
             pages: req.pages,
-            works: req.works
+            works: req.works,
+            clients: req.clients
         });
     });
 

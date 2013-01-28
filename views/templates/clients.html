@@ -1,0 +1,11 @@
+<div>{text|s}</div>
+
+<div class="clients">
+{#clients}
+    {?link}
+        <a href="{link}" target="_blank"><img src="{picture.url}" alt="{name}" /></a>
+    {:else}
+        <img src="{picture.url}" alt="{name}" />
+    {/link}
+{/clients}
+</div>
