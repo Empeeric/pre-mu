@@ -327,7 +327,7 @@ h3 { font-size: 30px; }
     max-width: 1200px;
     padding: 0;
     color: #2f383e;
-    text-align: center;
+    text-align: justify;
 }
 #works article h3 {
     font-size: 40px;
@@ -343,6 +343,10 @@ h3 { font-size: 30px; }
         el right
 
 */
+#works .landscape div {
+    text-align: center;
+}
+
 #works .portrait { -webkit-box-orient: horizontal; }
 #works .portrait .gallery { width: 60%; height: 80%; }
 #works .portrait div { width: 40%; height: 60%; }
