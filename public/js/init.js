@@ -70,7 +70,6 @@ $.fn.loadImages = function() {
             return;
 
         background(target);
-        $('#works a:first').click();
 
         var top = target.position().top;
         $main.css({ top: -top });
@@ -92,6 +91,7 @@ $(function() {
     var $logo = $('#header a:first');
     $('#header a').click(function() {
         $logo.animateClass('animate');
+        $('#works a:first').click();
     });
 
     $('#works').click(function() {
