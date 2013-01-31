@@ -4,13 +4,13 @@ var mongoose = require('mongoose'),
 var schema = new mongoose.Schema({
     parent: { type: Types.ObjectId, ref: 'pages' },
     title: { type: String, require: true },
-    display_title: { type: Boolean, 'default': true },
     template: { type: String, enum: require('../views/templates') },
     name: { type: String, require: true },
 
     text: { type: Types.Html },
     background: { type: Types.Picture },
     background_class: { type: String, enum: [ '-', 'big' ] },
+    display_title: { type: Boolean, 'default': true },
 
     order: { type: Number, editable: false },
     show: { type: Boolean, 'default': true }

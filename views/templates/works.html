@@ -5,9 +5,15 @@
     {#works}
     <article class="tab {layout}{@first} active{/first}">
         <figure class="gallery">
-            <img src="{picture1.url}" class="gal2"/>
-            <img src="{picture2.url}"/>
-            <img src="{picture3.url}" class="gal2"/>
+            {@first}
+                <img src="{picture1.url}" class="gal2" />
+                <img src="{picture2.url}" />
+                <img src="{picture3.url}" class="gal2" />
+            {:else}
+                <img src="img/gray.png" data-original="{picture1.url}" class="gal2" />
+                <img src="img/gray.png" data-original="{picture2.url}" />
+                <img src="img/gray.png" data-original="{picture3.url}" class="gal2" />
+            {/first}
         </figure>
         <div>
             <h3>{title}</h3>

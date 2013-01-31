@@ -1,4 +1,4 @@
-<div class="tabs with-menu">
+<div class="tabs with-menu{?display_title} with-title{/display_title}">
     {?display_title}
         <h2>{title}</h2>
     {/display_title}
@@ -26,5 +26,14 @@
             {>"views/templates/tab.html"/}
         {/template}
     </section>
+        {#children}
+        <section class="tab" id="tab-{_id}">
+            {?template}
+                {>"views/templates/{template}"/}
+            {:else}
+                {>"views/templates/tab.html"/}
+            {/template}
+        </section>
+        {/children}
     {/children}
 </div>

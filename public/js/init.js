@@ -13,6 +13,17 @@ $.fn.animateClass = function(cls, cb) {
 $.fn.bg = function(url) {
     return $(this).css('background-image', 'url('+url+')');
 };
+$.fn.loadImages = function() {
+    $('img[data-original]', this).each(function() {
+        var img = $(this);
+        img
+            .one('load', function() {
+                img.removeAttr('data-original');
+            })
+            .attr('src', img.data('original'));
+    });
+    return this;
+};
 
 
 (function() {
@@ -59,6 +70,7 @@ $.fn.bg = function(url) {
             return;
 
         background(target);
+        $('#works a:first').click();
 
         var top = target.position().top;
         $main.css({ top: -top });
@@ -77,7 +89,7 @@ $.fn.bg = function(url) {
 $(function() {
     ux();
 
-    var $logo = $('#logo');
+    var $logo = $('#header a:first');
     $('#header a').click(function() {
         $logo.animateClass('animate');
     });
@@ -85,23 +97,6 @@ $(function() {
     $('#works').click(function() {
         location.hash = '#/works';
     });
-
-    /*
-        load inner pages
-     * /
-    $('.page[data-href]').each(function () {
-        var $this = $(this);
-
-        $.ajax({
-            url: $(this).data('href'),
-            dataType: 'html',
-            success: function (data) {
-                $this.html(data);
-                ux($this);
-            }
-        });
-    });
-    */
 });
 
 
@@ -110,12 +105,12 @@ var ux = function(context) {
         gallery
      */
     $('.gallery img', context).click(function() {
-        var $this = $(this).attr('class', '');
+        var $this = $(this).removeClass('gal2 gal3');
 
         $.each(['nextAll', 'prevAll'], function(i, which) {
             var i = 2;
             $this[which]().each(function() {
-                $(this).attr('class', 'gal' + i++);
+                $(this).removeClass('gal2 gal3').addClass('gal' + i++);
             });
         });
     });
@@ -127,7 +122,7 @@ var ux = function(context) {
 
     $('.tabs', context).each(function() {
         var $this = $(this),
-            tabs = $this.find('> .tab');
+            tabs = $this.find('.tab');
 
         $this.find('> .nav.next, > .nav.prev').click(function(e) {
             e.preventDefault();
@@ -139,7 +134,7 @@ var ux = function(context) {
             if (!tab.length || !tab.is('.tab'))
                 return;
 
-            tab.removeClass('prev next').addClass('active');
+            tab.removeClass('prev next').addClass('active').loadImages();
             active.removeClass('prev next active').addClass(dir);
         });
 
@@ -149,6 +144,8 @@ var ux = function(context) {
 
             var name = $(this).attr('rel'),
                 tab = tabs.filter('#tab-'+ name);
+
+            console.log('tab', name, tab.length);
 
             if (!tab.length)
                 return false;

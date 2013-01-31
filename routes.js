@@ -67,8 +67,8 @@ module.exports = function(app){
         });
     });
 
-    app.get('/json', [ config ], function(req, res) {
-        res.json(req.config);
+    app.get('/json', [ pages ], function(req, res) {
+        res.json(req.pages);
     });
 
     mail.init(app.get('sendgrid'));
