@@ -1,7 +1,7 @@
 ﻿html { overflow: hidden; height: 100%; }
 body { overflow: auto; height: 100%;
     margin: 0; padding: 0;
-    font: 14px/1.5 Verdana, sans-serif;
+    font: 18px/1 'Lato', Verdana, sans-serif;
     background: -webkit-linear-gradient(left, rgba(236,236,236,1) 7%,rgba(255,255,255,1) 48%); /* Chrome10+,Safari5.1+ */
 }
 * { box-sizing: border-box; }
@@ -14,12 +14,13 @@ li { margin: 0; padding: 0; list-style: none; }
 ul { margin: 0; padding: 0; }
 h1, h2, h3, h4, h5, h6 {
     margin: 0; padding: 0; font-weight: normal;
-    font-family: 'PT Sans', sans-serif;
+    /*font-family: 'PT Sans', sans-serif;*/
     color: #c10f00;
+    font-weight: normal;
 }
 h1 {
     font-size: 90px; line-height: 1em;
-    font-family: 'Kozuka Gothic Pro', 'Myriad Pro', 'Segoe', sans-serif;
+    /*font-family: 'Kozuka Gothic Pro', 'Myriad Pro', 'Segoe', sans-serif;*/
     margin-top: 50px;
 }
 h2 {
@@ -41,7 +42,7 @@ h3 { font-size: 30px; }
 */
 #header {
     width: 100px;
-    background: rgba(255, 255, 2550, 0.8);
+    background: rgba(255, 255, 2550, 0.9);
     border: 1px solid #c10f00; border-width: 0 1px 0 0;
     height: 100%;
     position: fixed;
@@ -92,8 +93,9 @@ h3 { font-size: 30px; }
     text-align: center;
     color: #000;
     text-transform: uppercase;
-    font-family: 'PT Sans', sans-serif;
-    padding-left: 105px;
+    /*font-family: 'PT Sans', sans-serif;*/
+    font-size: 16px;
+    padding-left: 90px;
     white-space: nowrap;
     opacity: 0;
     -webkit-transition: opacity .5s;
@@ -123,7 +125,7 @@ h3 { font-size: 30px; }
 }
 .page {
     height: 100%;
-    padding: 0 50px 0 230px;
+    padding: 0 50px 0 150px;
     position: relative;
     overflow: hidden;
 }
@@ -143,7 +145,7 @@ h3 { font-size: 30px; }
     background-size: contain;
 }
 #home {
-    height: 70%;
+    height: 50%;
 }
 #contact {
     overflow: auto;
@@ -175,7 +177,6 @@ h3 { font-size: 30px; }
 }
 .tabs.with-menu {  }
 .tabs.with-menu > .tab { top: 15%; height: 85%; }
-.tab > h2 { margin: 0; }
 
 
 /*
@@ -186,12 +187,12 @@ h3 { font-size: 30px; }
     /*position: absolute; top: 0; left: 0;*/
     margin-left: -20px; padding: 10px 0 0 0;
     z-index: 20;
+    font-size: 20px;
 }
 .top-menu li {
     display: inline-block;
     border-right: 2px solid #d5d5d5;
     padding: 0 14px;
-    font-size: 16px;
     line-height: 16px;
     height: 15px;
     position: relative;
@@ -233,6 +234,7 @@ h3 { font-size: 30px; }
     border: 1px solid #a7a7a7;
     box-shadow: 0 0 4px #cacaca;
     z-index: 5;
+    font-size: 18px;
 }
 .top-menu li:hover .dropdown {
     display: block;
@@ -242,8 +244,7 @@ h3 { font-size: 30px; }
     border: 0; padding: 0;
 }
 .top-menu li .dropdown a {
-    font-family: Verdana, sans-serif;
-    font-size: 14px;
+    /*font-family: Verdana, sans-serif;*/
     color: #1e2227;
     display: block;
     padding: 12px;
@@ -298,9 +299,9 @@ h3 { font-size: 30px; }
     position: absolute; bottom: 53px; left: 5px;
     width: 52px; height: 77px;
     padding-top: 53px; box-sizing: border-box;
-    text-align: center; font-size: 12px;
+    text-align: center;
     background: url(../img/work-prev.png) no-repeat -52px 0;
-    color: #9d9d9d;
+    color: #626262;
     z-index: 20;
 }
 #works a.nav:hover {
@@ -314,13 +315,11 @@ h3 { font-size: 30px; }
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-box-pack: center;
-    -webkit-box-align: center;
+    -webkit-box-align: top;
 }
 #works article div {
     max-width: 1200px;
-    padding: 0 10%;
-    font-family: Verdana, sans-serif;
-    font-size: 14px;
+    padding: 10% 10% 0 0;
     color: #2f383e;
 }
 #works article h3 {
@@ -339,7 +338,7 @@ h3 { font-size: 30px; }
 */
 #works .portrait { -webkit-box-orient: horizontal; }
 #works .portrait .gallery { width: 60%; }
-#works .portrait div { width: 40%; height: auto; }
+#works .portrait div { width: 40%; height: auto; padding: 10% 0 0 10%; }
 #works .portrait.right { -webkit-box-direction: reverse; }
 
 #works .el .gallery { height: 100%; }
@@ -456,6 +455,10 @@ h3 { font-size: 30px; }
 /*
     clients
 */
+.clients {
+    max-width: 800px;
+    padding-top: 20px;
+}
 .clients a {
-    float: left; margin-right: 50px;
+    float: left; margin: 10px;
 }

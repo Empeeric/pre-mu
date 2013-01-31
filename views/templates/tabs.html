@@ -1,12 +1,14 @@
 <div class="tabs with-menu">
-    <h2>{title}</h2>
+    {?display_title}
+        <h2>{title}</h2>
+    {/display_title}
 
     <ul class="top-menu">
         {#children}
         <li>
-            <a href="#" rel="{_id}"{@first} class="active"{/first}>{title}</a>
+            <a href="#" rel="{_id}" class="{@first}active{/first}{?children} with-menu{/children}">{title}</a>
             {?children}
-            <ul class="dropdown">{?children} class="with-menu"{/children}
+            <ul class="dropdown">
                 {#children}
                 <li><a href="#" rel="{_id}">{title}</a></li>
                 {/children}
