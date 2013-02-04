@@ -16,6 +16,7 @@ node_modules/*
 npm-debug.log
 .idea
 public/cdn/*
-.idea
-node_modules
-/tools/db-restore-local-to-production.bat.bat
+
+/tools/db-production-dump.bat
+/tools/db-production-restore-to-local.bat
+/dump/heroku_app10849811

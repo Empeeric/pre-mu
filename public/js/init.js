@@ -24,18 +24,19 @@ $.fn.loadImages = function() {
     });
     return this;
 };
+$.fn.reverse = [].reverse;
 
 
+/*
+    background image
+ */
 (function() {
-    /*
-     background image
-     */
     var $wrap = $('#wrap'),
         backs = [ $('#back li:first'), $('#back li:last') ],
-        num = 1,
-        img = $('<img />');
+//        img = $('<img />'),
+        num = 1;
 
-    var background = function(target) {
+    window.background = function(target) {
         var url = target.data('background'),
             clss = target.data('background-class');
 
@@ -47,11 +48,13 @@ $.fn.loadImages = function() {
 //            })
 //            .attr('src', url);
     };
+})();
 
 
-    /*
-     site navigation
-     */
+/*
+    site navigation
+ */
+(function() {
     var $main = $('#main'),
         $header = $('#header'),
         pages = $main.find('.page');
@@ -74,11 +77,10 @@ $.fn.loadImages = function() {
         var top = target.position().top;
         $main.css({ top: -top });
     };
-    $(window)
-        .on('hashchange resize', function() {
-            page(location.hash);
-        })
-        .trigger('hashchange');
+    page(location.hash);
+    $(window).on('hashchange resize', function() {
+        page(location.hash);
+    });
     setTimeout(function() {
         $main.removeClass('no-transition');
     }, 0);
@@ -87,6 +89,8 @@ $.fn.loadImages = function() {
 
 $(function() {
     ux();
+    menuer();
+    $(window).on('resize', menuer);
 
     var $logo = $('#header a:first');
     $('#header a').click(function() {
@@ -98,6 +102,36 @@ $(function() {
         location.hash = '#/works';
     });
 });
+
+
+/*
+    menuer
+ */
+(function() {
+    var menus = [];
+    $('.top-menu').each(function() {
+        menus.push({
+            menu: $(this),
+            li: $('> li:not(.more)', this).reverse().map(function() {
+                $(this).data('end', $(this).position().left + $(this).width() - 40);
+                return $(this);
+            })
+        });
+    });
+
+    window.menuer = function() {
+        $.each(menus, function() {
+            var width = this.menu.outerWidth();
+            $.each(this.li, function() {
+                this.toggleClass('red', this.data('end') > width);
+                if (this.data('end') <= width)
+                    return false;
+                else
+                    console.log('menuer', 'end:', this.data('end'), 'width:', width);
+            });
+        });
+    };
+})();
 
 
 var ux = function(context) {
@@ -144,8 +178,6 @@ var ux = function(context) {
 
             var name = $(this).attr('rel'),
                 tab = tabs.filter('#tab-'+ name);
-
-            console.log('tab', name, tab.length);
 
             if (!tab.length)
                 return false;
