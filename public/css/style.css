@@ -202,7 +202,8 @@ h3 { font-size: 30px; }
     line-height: 16px;
     position: relative;
 }
-.top-menu li:last-child { border: 0; }
+.top-menu li:last-child,
+.top-menu li:nth-last-child(2) { border: 0; }
 .top-menu li a {
     display: block;
     padding: 10px;
@@ -273,9 +274,9 @@ h3 { font-size: 30px; }
     position: absolute;
     bottom: -20px; right: 0;
     background: url(../img/ServicesUlArrowDownImg.png) no-repeat right center;
-    width: 20px; height: 10px;
+    width: 40px; height: 40px;
 }
-.top-menu li.red + li.more {
+.top-menu li.red ~ li.more {
     display: block;
 }
 

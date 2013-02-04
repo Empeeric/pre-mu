@@ -126,8 +126,8 @@ $(function() {
                 this.toggleClass('red', this.data('end') > width);
                 if (this.data('end') <= width)
                     return false;
-                else
-                    console.log('menuer', 'end:', this.data('end'), 'width:', width);
+//                else
+//                    console.log('menuer', 'end:', this.data('end'), 'width:', width);
             });
         });
     };
