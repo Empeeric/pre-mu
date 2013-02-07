@@ -27,6 +27,12 @@ $.fn.loadImages = function() {
 $.fn.reverse = [].reverse;
 
 
+// disable native scrolling
+$('body').on('touchmove', function(e){
+    e.preventDefault();
+});
+
+
 /*
     background image
  */
