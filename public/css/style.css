@@ -150,7 +150,7 @@ h3 { font-size: 30px; }
     background-size: contain;
 }
 #home {
-    height: 50%;
+    height: 60%;
 }
 #contact {
     overflow: auto;
@@ -507,4 +507,21 @@ h3 { font-size: 30px; }
     height: 10px;
     background-color: #646464;
     border-radius: 3px
+}
+
+
+/*
+    ie message
+*/
+#ie-message {
+    position: absolute; top: 0; left: 50%; z-index: 50;
+    width: 400px; height: 50px;
+    margin-left: -200px; padding: 10px;
+
+    text-align: center;
+    color: white;
+    background-color: #be3b33;
+}
+#ie-message:hover {
+    background: #AB0B00;
 }
