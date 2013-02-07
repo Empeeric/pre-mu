@@ -25,6 +25,19 @@ $.fn.loadImages = function() {
     return this;
 };
 $.fn.reverse = [].reverse;
+$.fn.teletype = function(opts){
+    var $this = this,
+        defaults = {
+            animDelay: 50
+        },
+        settings = $.extend(defaults, opts);
+
+    $.each(settings.text, function(i, letter){
+        setTimeout(function(){
+            $this.html($this.html() + letter);
+        }, settings.animDelay * i);
+    });
+};
 
 
 // disable native scrolling, except withing .text
@@ -32,6 +45,11 @@ $('body').on('touchmove', function(e) {
     if ($(e.target).closest('.text').length == 0)
         e.preventDefault();
 });
+
+
+// fuck ie
+if ($.browser.msie)
+    $('#ie-message').removeClass('hide');
 
 
 /*
