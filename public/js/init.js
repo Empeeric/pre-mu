@@ -25,59 +25,70 @@ $.fn.loadImages = function() {
     return this;
 };
 $.fn.reverse = [].reverse;
-$.fn.teletype = function(opts){
-    var $this = this,
-        defaults = {
-            animDelay: 50
-        },
-        settings = $.extend(defaults, opts);
+$.fn.teletype = function(options, cb){
+    var $t = this,
+        settings = $.extend({
+            delay: 30
+        }, options);
 
-    $.each(settings.text, function(i, letter){
-        setTimeout(function(){
-            $this.html($this.html() + letter);
-        }, settings.animDelay * i);
-    });
+    var text = settings.text.replace('&amp;', '&').replace('&nbsp;', ' '),
+        len = text.length,
+        i = 0;
+
+    var int = setInterval(function() {
+        if (i == len) {
+            clearInterval(int);
+            return cb();
+        }
+        var letter = text[i++];
+        $t.html($t.html() + letter);
+    }, settings.delay);
+};
+var series = function(tasks, cb) {
+    var index = 0,
+        invoker = function() {
+            if (index >= tasks.length)
+                return (cb || $.noop)();
+
+            var fn = tasks[index].shift(),
+                params = tasks[index];
+
+            index++;
+
+            params.push(invoker);
+
+            fn.apply(null, params);
+        };
+    invoker();
 };
 
 
-// disable native scrolling, except withing .text
-$('body').on('touchmove', function(e) {
-    if ($(e.target).closest('.text').length == 0)
-        e.preventDefault();
-});
-
-
-// fuck ie
-if ($.browser.msie)
-    $('#ie-message').removeClass('hide');
-
-
 /*
-    background image
+ background image
  */
 (function() {
     var $wrap = $('#wrap'),
         backs = [ $('#back li:first'), $('#back li:last') ],
-//        img = $('<img />'),
+    //        img = $('<img />'),
         num = 1;
 
     window.background = function(target) {
         var url = target.data('background'),
             clss = target.data('background-class');
 
-//        img.off('load')
-//            .one('load', function() {
+        //        img.off('load')
+        //            .one('load', function() {
         backs[num].bg(url).attr('class', 'show ' + clss);
         backs[num ? 0 : 1].removeClass('show');
         num = num ? 0 : 1;
-//            })
-//            .attr('src', url);
+        //            })
+        //            .attr('src', url);
     };
 })();
 
 
 /*
-    site navigation
+ site navigation
  */
 (function() {
     var $main = $('#main'),
@@ -113,6 +124,16 @@ if ($.browser.msie)
 
 
 $(function() {
+    // disable native scrolling, except withing .text
+    $('body').on('touchmove', function(e) {
+        if ($(e.target).closest('.text').length == 0)
+            e.preventDefault();
+    });
+
+    // fuck ie
+    if ($.browser.msie)
+        $('#ie-message').removeClass('hide');
+
     ux();
     menuer();
     $(window).on('resize', menuer);
@@ -126,6 +147,21 @@ $(function() {
     $('#works').click(function() {
         location.hash = '#/works';
     });
+
+
+    // teletype
+    var tasks = [];
+    $('.teletype span').each(function() {
+        var $t = $(this),
+            text = $t.html();
+
+        $t.html('');
+        tasks.push([function(cb) {
+            $t.teletype({ text: text }, cb);
+            console.log(text);
+        }]);
+    });
+    series(tasks);
 });
 
 
