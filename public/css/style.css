@@ -264,7 +264,7 @@ h3 { font-size: 30px; }
 .top-menu li.red {
     display: none;
     float: right; clear: right;
-    width: 150px;
+    min-width: 200px;
     padding: 5px;
     border: 0;
     background: rgba(255,255,255,0.9);
@@ -275,13 +275,12 @@ h3 { font-size: 30px; }
 }
 .top-menu li.more {
     display: none;
-    position: absolute;
-    bottom: -20px; right: 0;
-    background: url(../img/ServicesUlArrowDownImg.png) no-repeat right center;
-    width: 40px; height: 40px;
+    background: url(../img/ServicesUlArrowDownImg.png) no-repeat right top;
+    width: 90px; height: 30px;
+    cursor: pointer;
 }
 .top-menu li.red ~ li.more {
-    display: block;
+    display: inline-block;
 }
 
 
