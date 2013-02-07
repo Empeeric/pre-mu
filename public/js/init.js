@@ -27,9 +27,10 @@ $.fn.loadImages = function() {
 $.fn.reverse = [].reverse;
 
 
-// disable native scrolling
-$('body').on('touchmove', function(e){
-    e.preventDefault();
+// disable native scrolling, except withing .text
+$('body').on('touchmove', function(e) {
+    if ($(e.target).closest('.text').length == 0)
+        e.preventDefault();
 });
 
 
