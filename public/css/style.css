@@ -515,8 +515,8 @@ h3 { font-size: 30px; }
 */
 #ie-message {
     position: absolute; top: 0; left: 50%; z-index: 50;
-    width: 400px; height: 50px;
-    margin-left: -200px; padding: 10px;
+    width: 420px; height: 50px;
+    margin-left: -210px; padding: 10px;
 
     text-align: center;
     color: white;
@@ -524,4 +524,8 @@ h3 { font-size: 30px; }
 }
 #ie-message:hover {
     background: #AB0B00;
+}
+#ie-message img {
+    vertical-align: middle;
+    margin-right: 10px;
 }
