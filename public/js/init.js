@@ -28,7 +28,7 @@ $.fn.reverse = [].reverse;
 $.fn.teletype = function(options, cb){
     var $t = this,
         settings = $.extend({
-            delay: 30
+            delay: 15
         }, options);
 
     var text = settings.text.replace('&amp;', '&').replace('&nbsp;', ' '),
