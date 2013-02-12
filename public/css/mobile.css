@@ -33,6 +33,10 @@
     #works article h3 { text-align: center; }
     #works article p { display: none; }
     #works a.nav { font-size: 0; bottom: -20px; }
+
+    #like {
+        display: none;
+    }
 }
 
 @media (max-width: 340px) {
