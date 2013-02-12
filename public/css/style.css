@@ -110,6 +110,18 @@ h3 { font-size: 30px; }
 #header a:hover span { color: #A50A00; }
 #header .active span { color: white !important; }
 
+#header .empeeric {
+    color: gray;
+    height: auto; width: 100%;
+    position: absolute; left: 0; bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+#header .empeeric:hover {
+    color: #000000;
+}
+
+
 /*
     content
 */
