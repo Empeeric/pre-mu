@@ -12,11 +12,11 @@ require('sugar');
 var app = module.exports = express();
 
 app.configure(function(){
-    app.set('port', process.env.PORT);
-    app.set('mongo', process.env.MONGOLAB_URI);
+    app.set('port', process.env.PORT || 80);
+    app.set('mongo', process.env.MONGOLAB_URI || 'mongodb://localhost/mouse');
     app.set('cloudinary', process.env.CLOUDINARY_URL);
     app.set('sendgrid', { user: process.env.SENDGRID_USERNAME, key: process.env.SENDGRID_PASSWORD });
-    app.set('admin', { username: 'admin', password: process.env.ADMIN_PASSWORD });
+    app.set('admin', { username: 'admin', password: process.env.ADMIN_PASSWORD || 'pass' });
     app.set('site', 'Mouse');
 
     app.engine('html', require('consolidate').dust);
