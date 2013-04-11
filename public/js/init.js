@@ -130,9 +130,15 @@ $(function() {
             e.preventDefault();
     });
 
-    // fuck ie
-    if ($.browser.msie)
-        $('#ie-message').removeClass('hide');
+    //// fuck ie
+    //if ($.browser.msie)
+    //    $('#ie-message').removeClass('hide');
+    /*if ($.browser.msie){
+        var box = new Flexie.box({
+            target : $("#works .portrait")[0],
+            orient : "horizontal"
+        });
+    } */
 
     ux();
     menuer();
@@ -148,9 +154,14 @@ $(function() {
         location.hash = '#/works';
     });
 
-
+    setTimeout("$('#works .workContainer').first().addClass('active');", 1000);
+    $("header a.home").click(function(){
+        $('#works .workContainer').hide(0,function(){$('#works .workContainer').removeClass("active").show(0)});
+        setTimeout("$('#works .workContainer').first().addClass('active');", 1000);
+    });
     // teletype
     var tasks = [];
+    /*
     $('.teletype span').each(function() {
         var $t = $(this),
             text = $t.html();
@@ -161,6 +172,9 @@ $(function() {
             console.log(text);
         }]);
     });
+    */
+    $('.teletype span').fadeIn(3000);
+    $("#header").css("left", "-100px").animate({"left": "+=100px"}, "slow");
     series(tasks);
     //*/
 });
