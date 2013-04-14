@@ -125,11 +125,11 @@ var series = function(tasks, cb) {
 
 $(function() {
     // disable native scrolling, except withing .text
-    $('body').on('touchmove', function(e) {
+/*    $('body').on('touchmove', function(e) {
         if ($(e.target).closest('.text').length == 0)
             e.preventDefault();
     });
-
+*/
     //// fuck ie
     //if ($.browser.msie)
     //    $('#ie-message').removeClass('hide');
