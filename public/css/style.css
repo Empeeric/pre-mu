@@ -9,7 +9,7 @@ body { overflow: auto; height: 100%;
     background: linear-gradient(left, rgba(236,236,236,1) 7%,rgba(255,255,255,1) 48%);
     background: filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ececec', endColorstr='#ffffff');
 }
-* { box-sizing: border-box; }
+* { box-sizing: border-box;  }
 
 p {
     margin: 0 0 10px 0;
