@@ -353,8 +353,8 @@ h3 { font-size: 30px; }
     transform: translateX(-80%);
 }
 /*.tabs.with-menu {  }*/
-.tabs.with-menu > .top-menu { padding-top: 30px; }
-.tabs.with-menu > .tab { top: 0; height: 100%; padding-top: 60px; }
+.tabs.with-menu > .top-menu { padding-top: 2%; }
+.tabs.with-menu > .tab { top: 0; height: 100%; padding-top: 4%; }
 .tabs.with-menu.with-title > .top-menu { padding-top: 80px; }
 .tabs.with-menu.with-title > .tab { padding-top: 120px; }
 
